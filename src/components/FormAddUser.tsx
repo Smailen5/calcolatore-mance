@@ -1,14 +1,8 @@
-import CircleLoading from "@/components/circleLoading";
+import CircleLoading from "@/components/CircleLoading";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useState, useEffect } from "react";
 import { number, object, string } from "yup";
 import { Button } from "../components/ui/button";
-
-interface UserFormValues {
-  name: string;
-  anniServizio: string;
-  contratto: string;
-}
+import { useGlobalContext } from "../utils/contex";
 
 const validationSchema = object({
   name: string()
@@ -27,19 +21,8 @@ const initialValues = {
 };
 
 const FormAddUser = () => {
-  const [dataUser, setDataUser] = useState<UserFormValues[]>([]);
-  const [save, setSave] = useState(false);
-
-  // Manda messaggio di salvataggio
-  useEffect(() => {
-    if (save) {
-      const timer = setTimeout(() => {
-        setSave(false);
-      }, 1500);
-      console.log(dataUser);
-      return () => clearTimeout(timer);
-    }
-  }, [save, dataUser]);
+  const { setDataUser, spazioOccupato, isSave, setIsSave } = useGlobalContext();
+  console.log(spazioOccupato);
 
   return (
     <Formik
@@ -53,7 +36,7 @@ const FormAddUser = () => {
           resetForm();
           // serve per poter aggiornare il bottone del form mentre invia i dati
           setSubmitting(false);
-          setSave(true);
+          setIsSave(true);
         }, 1000);
       }}
     >
@@ -131,7 +114,9 @@ const FormAddUser = () => {
               "Salva"
             )}
           </Button>
-          {save && <p className="text-green-500">Utente salvato con successo</p>}
+          {isSave && (
+            <p className="text-green-500">Utente salvato con successo</p>
+          )}
         </Form>
       )}
     </Formik>
