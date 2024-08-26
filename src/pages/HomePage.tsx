@@ -5,7 +5,9 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <h1>Home</h1>
+      <main className="flex h-[86vh] flex-col items-center justify-center gap-8 px-4">
+        <h1 className="text-3xl font-bold">Compila i campi</h1>
+      </main>
       <Footer />
     </>
   );
