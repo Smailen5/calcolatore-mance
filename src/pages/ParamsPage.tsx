@@ -6,7 +6,7 @@ const ParamsPage = () => {
   return (
     <>
       <Navbar />
-      <main className="flex h-[86vh] flex-col items-center justify-center gap-8 px-4">
+      <main className="flex h-[86vh] flex-col justify-center gap-8 px-4">
         <FormAddUser />
       </main>
       <Footer />
