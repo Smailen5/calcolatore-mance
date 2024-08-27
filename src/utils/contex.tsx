@@ -16,6 +16,7 @@ type AppContextType = {
 };
 
 interface UserFormValues {
+  id: string;
   name: string;
   anniServizio: string;
   contratto: string;

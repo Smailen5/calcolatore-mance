@@ -3,11 +3,13 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { number, object, string } from "yup";
 import { Button } from "../components/ui/button";
 import { useGlobalContext } from "../utils/contex";
+import { v4 as uuidv4 } from "uuid";
 
 const validationSchema = object({
+  id: string().default(uuidv4()),
   name: string()
     .required("Cosa?... Non hai un nome?")
-    .min(4, "Il nome è troppo breve. (min. 4 caratteri)"),
+    .min(4, "Il nome è troppo breve. (min. 4 caratteri)").max(10, "Il nome è troppo lungo. (max. 10 caratteri)"),
   anniServizio: number()
     .required("Non stai lavorando?")
     .min(1, "Anni servizio non validi"),
@@ -15,22 +17,27 @@ const validationSchema = object({
 });
 
 const initialValues = {
+  id: "",
   name: "",
   anniServizio: "",
   contratto: "",
 };
 
 const FormAddUser = () => {
-  const { setDataUser, spazioOccupato, isSave, setIsSave } = useGlobalContext();
-  console.log(spazioOccupato);
+  const { setDataUser, isSave, setIsSave } = useGlobalContext();
+  // console.log(spazioOccupato);
+
+  // console.log(uuidv4())
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={(values, { resetForm, setSubmitting }) => {
+        // genera un id univoco
+        const newUser = {...values, id: uuidv4()}
         // salva i dati degli utenti
-        setDataUser((prevData) => [...prevData, values]);
+        setDataUser((prevData) => [...prevData, newUser]);
         // attende prima di resettare il form ai valori iniziali
         setTimeout(() => {
           resetForm();
