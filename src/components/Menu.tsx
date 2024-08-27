@@ -19,10 +19,10 @@ const Menu = () => {
           <Link to="/">Home</Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="/parametri">Parametri</Link>
+          <Link to="/utenti">Utenti</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem>Team</DropdownMenuItem>
-        <DropdownMenuItem>Subscription</DropdownMenuItem>
+        <DropdownMenuItem>Ore</DropdownMenuItem>
+        <DropdownMenuItem>Tutorial</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
