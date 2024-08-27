@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Error from "../pages/ErrorPage";
 import Home from "../pages/HomePage";
-import Params from "../pages/ParamsPage";
+import Params from "../pages/UtentiPage";
 
 export const router = createBrowserRouter([
   {
@@ -9,7 +9,7 @@ export const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/parametri",
+    path: "/utenti",
     element: <Params />,
   },
   {

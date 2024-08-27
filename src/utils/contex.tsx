@@ -16,6 +16,7 @@ type AppContextType = {
 };
 
 interface UserFormValues {
+  id: string;
   name: string;
   anniServizio: string;
   contratto: string;
@@ -77,7 +78,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       localStorage.setItem("user", JSON.stringify(dataUser));
       const timer = setTimeout(() => {
         setIsSave(false);
-      }, 1500);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [isSave, dataUser]);
