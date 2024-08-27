@@ -44,7 +44,7 @@ const FormAddUser = () => {
           // serve per poter aggiornare il bottone del form mentre invia i dati
           setSubmitting(false);
           setIsSave(true);
-        }, 1000);
+        }, 500);
       }}
     >
       {({ handleSubmit, isSubmitting }) => (
