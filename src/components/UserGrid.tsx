@@ -5,11 +5,11 @@ import { useState } from "react";
 import FormAddHours from "./FormAddHours";
 
 const UserGrid = ({ noButton }: { noButton?: boolean }) => {
-  const { dataUser, setDataUser, setIsSave } = useGlobalContext();
+  const { dataUser, setDataUser, setIsSave, hours, setHours } = useGlobalContext();
   const [messageUser, setMessageUser] = useState("Ecco tutti gli utenti:");
   const [selectedUser, setSelectedUser] = useState<string>("");
   const [nameUser, setNameUser] = useState<string>("");
-  const [hours, setHours] = useState<number | "">("");
+  // const [hours, setHours] = useState<number | "">("");
 
   // se non ci sono user visualizza un messaggio
   if (!dataUser || dataUser.length === 0) {
@@ -56,7 +56,7 @@ const UserGrid = ({ noButton }: { noButton?: boolean }) => {
       });
       setDataUser(updatedUserList);
       setIsSave(true);
-      setHours(""); // resetta input ore
+      setHours(0); // resetta input ore
       setNameUser(""); // resetta nome utente
       setSelectedUser(""); // resetta utente selezionato
     }
@@ -68,7 +68,8 @@ const UserGrid = ({ noButton }: { noButton?: boolean }) => {
       <FormAddHours
         nameUser={nameUser}
         handleHours={handleAddHours}
-        isVisible={selectedUser}
+        //  CONTROLLA BENE QUESTO, NON LO CAPISCO BENE
+        isVisible={!!selectedUser}
       />
       {/* messaggio dinamico che cambia se viene eliminato un user */}
       <p className="text-center">{messageUser}</p>
