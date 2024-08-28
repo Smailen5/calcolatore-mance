@@ -5,7 +5,8 @@ import { useState } from "react";
 import FormAddHours from "./FormAddHours";
 
 const UserGrid = ({ noButton }: { noButton?: boolean }) => {
-  const { dataUser, setDataUser, setIsSave, hours, setHours } = useGlobalContext();
+  const { dataUser, setDataUser, setIsSave, hours, setHours } =
+    useGlobalContext();
   const [messageUser, setMessageUser] = useState("Ecco tutti gli utenti:");
   const [selectedUser, setSelectedUser] = useState<string>("");
   const [nameUser, setNameUser] = useState<string>("");

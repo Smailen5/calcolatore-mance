@@ -13,8 +13,8 @@ type AppContextType = {
   setDataUser: React.Dispatch<React.SetStateAction<UserFormValues[]>>;
   isSave?: boolean;
   setIsSave: React.Dispatch<React.SetStateAction<boolean>>;
-  hours?:number;
-  setHours:React.Dispatch<React.SetStateAction<number>>;
+  hours?: number;
+  setHours: React.Dispatch<React.SetStateAction<number>>;
 };
 
 interface UserFormValues {
@@ -89,7 +89,15 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ spazioOccupato, dataUser, setDataUser, isSave, setIsSave, hours, setHours }}
+      value={{
+        spazioOccupato,
+        dataUser,
+        setDataUser,
+        isSave,
+        setIsSave,
+        hours,
+        setHours,
+      }}
     >
       {children}
     </AppContext.Provider>
