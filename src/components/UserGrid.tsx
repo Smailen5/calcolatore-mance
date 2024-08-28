@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 
 const UserGrid = ({ noButton }: { noButton?: boolean }) => {
-  const { dataUser, setDataUser, isSave, setIsSave } = useGlobalContext();
+  const { dataUser, setDataUser, setIsSave } = useGlobalContext();
   const [messageUser, setMessageUser] = useState("Ecco tutti gli utenti:");
   const [selectedUser, setSelectedUser] = useState<string | null>(null);
   const [nameUser, setNameUser] = useState<string | null>(null);
@@ -19,6 +19,7 @@ const UserGrid = ({ noButton }: { noButton?: boolean }) => {
   const removeUser = (id: string, name: string) => {
     const newUserList = dataUser.filter((user) => user.id !== id);
     setDataUser(newUserList);
+    setIsSave(true)
     // aggiungi un messaggio di conferma con setTimeout
     setMessageUser(`Utente eliminato: ${name} 👋`);
     console.log(name);
@@ -62,7 +63,7 @@ const UserGrid = ({ noButton }: { noButton?: boolean }) => {
   return (
     <>
       {/* input per aggiungere le ore solo se ce un utente selezionato */}
-      {selectedUser && isSave && (
+      {selectedUser && (
         <div className="flex flex-col gap-2">
           <h3>
             Utente selezionato:{" "}
