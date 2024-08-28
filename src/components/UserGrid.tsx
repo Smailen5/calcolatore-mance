@@ -5,6 +5,7 @@ import { useState } from "react";
 const UserGrid = ({ noButton }: { noButton?: boolean }) => {
   const { dataUser, setDataUser } = useGlobalContext();
   const [messageUser, setMessageUser] = useState("Ecco tutti gli utenti:");
+  const [selectedUser, setSelectedUser] = useState<string | null>(null);
 
   // se non ci sono user visualizza un messaggio
   if (!dataUser || dataUser.length === 0) {
@@ -24,6 +25,14 @@ const UserGrid = ({ noButton }: { noButton?: boolean }) => {
     return () => clearTimeout(timer);
   };
 
+  // gestisce la selezione del user
+  const handleSelectUser = (id:string)=>{
+    setSelectedUser(id)
+    console.log(`utente selezionato: ${selectedUser}`)
+    // gestisci qui l'aggiunta delle ore di lavoro per l'utente selezionato
+  }
+  
+
   return (
     <>
       {/* messaggio dinamico che cambia se viene eliminato un user */}
@@ -38,6 +47,7 @@ const UserGrid = ({ noButton }: { noButton?: boolean }) => {
               key={utente.id}
               {...utente}
               remove={() => removeUser(utente.id, utente.name)}
+              onSelect={()=> handleSelectUser(utente.id)}
               noButton={noButton}
             />
           ))}
