@@ -1,8 +1,7 @@
 import { useGlobalContext } from "@/utils/contex";
-import SingleUser from "./SingleUser";
 import { useState } from "react";
-// import { Button } from "./ui/button";
 import FormAddHours from "./FormAddHours";
+import SingleUser from "./SingleUser";
 
 const UserGrid = ({ noButton }: { noButton?: boolean }) => {
   const { dataUser, setDataUser, setIsSave, hours, setHours } =
@@ -10,7 +9,6 @@ const UserGrid = ({ noButton }: { noButton?: boolean }) => {
   const [messageUser, setMessageUser] = useState("Ecco tutti gli utenti:");
   const [selectedUser, setSelectedUser] = useState<string>("");
   const [nameUser, setNameUser] = useState<string>("");
-  // const [hours, setHours] = useState<number | "">("");
 
   // se non ci sono user visualizza un messaggio
   if (!dataUser || dataUser.length === 0) {
@@ -43,23 +41,22 @@ const UserGrid = ({ noButton }: { noButton?: boolean }) => {
 
   // gestisce l'inserimento delle ore
   const handleAddHours = () => {
-    // verifica che ci sia un utente selezionato e che l'input ore non sia vuoto
+    // Verifica che ci sia un utente selezionato e che l'input ore non sia vuoto
     if (selectedUser && hours) {
       const updatedUserList = dataUser.map((user) => {
-        console.log("prova prima di return");
         if (user.id === selectedUser) {
           return {
             ...user,
-            oreLavorate: (user.oreLavorate || 0) + hours,
+            oreLavorate: hours, // Aggiorna oreLavorate
           };
         }
-        return user;
+        return user; // Ritorna gli altri utenti senza modifiche
       });
-      setDataUser(updatedUserList);
-      setIsSave(true);
-      setHours(0); // resetta input ore
-      setNameUser(""); // resetta nome utente
-      setSelectedUser(""); // resetta utente selezionato
+      setDataUser(updatedUserList); // Aggiorna lo stato con la nuova lista utenti
+      setIsSave(true); // Segnala che ci sono modifiche da salvare
+      setHours(0); // Resetta il valore delle ore
+      setNameUser(""); // Resetta il nome dell'utente selezionato
+      setSelectedUser(""); // Resetta l'utente selezionato
     }
   };
 
