@@ -13,6 +13,8 @@ type AppContextType = {
   setDataUser: React.Dispatch<React.SetStateAction<UserFormValues[]>>;
   isSave?: boolean;
   setIsSave: React.Dispatch<React.SetStateAction<boolean>>;
+  hours?:number;
+  setHours:React.Dispatch<React.SetStateAction<number>>;
 };
 
 interface UserFormValues {
@@ -64,6 +66,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [dataUser, setDataUser] = useState<UserFormValues[]>([]);
   // controlla il salvataggio degli utenti
   const [isSave, setIsSave] = useState(false);
+  const [hours, setHours] = useState<number>(0);
 
   // recupera e salva i dati da localStorage nello stato al caricamento della pagina
   useEffect(() => {
@@ -86,7 +89,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ spazioOccupato, dataUser, setDataUser, isSave, setIsSave }}
+      value={{ spazioOccupato, dataUser, setDataUser, isSave, setIsSave, hours, setHours }}
     >
       {children}
     </AppContext.Provider>
