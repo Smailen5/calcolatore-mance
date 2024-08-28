@@ -4,12 +4,14 @@ import { number, object, string } from "yup";
 import { Button } from "../components/ui/button";
 import { useGlobalContext } from "../utils/contex";
 import { v4 as uuidv4 } from "uuid";
+import { useEffect, useState } from "react";
 
 const validationSchema = object({
   id: string().default(uuidv4()),
   name: string()
     .required("Cosa?... Non hai un nome?")
-    .min(4, "Il nome è troppo breve. (min. 4 caratteri)").max(10, "Il nome è troppo lungo. (max. 10 caratteri)"),
+    .min(4, "Il nome è troppo breve. (min. 4 caratteri)")
+    .max(10, "Il nome è troppo lungo. (max. 10 caratteri)"),
   anniServizio: number()
     .required("Non stai lavorando?")
     .min(1, "Anni servizio non validi"),
@@ -24,10 +26,17 @@ const initialValues = {
 };
 
 const FormAddUser = () => {
-  const { setDataUser, isSave, setIsSave } = useGlobalContext();
-  // console.log(spazioOccupato);
+  const { setDataUser, setIsSave } = useGlobalContext();
+  const [message, setMessage] = useState<boolean>(false);
 
-  // console.log(uuidv4())
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage(false);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
 
   return (
     <Formik
@@ -35,7 +44,7 @@ const FormAddUser = () => {
       validationSchema={validationSchema}
       onSubmit={(values, { resetForm, setSubmitting }) => {
         // genera un id univoco
-        const newUser = {...values, id: uuidv4()}
+        const newUser = { ...values, id: uuidv4() };
         // salva i dati degli utenti
         setDataUser((prevData) => [...prevData, newUser]);
         // attende prima di resettare il form ai valori iniziali
@@ -44,6 +53,7 @@ const FormAddUser = () => {
           // serve per poter aggiornare il bottone del form mentre invia i dati
           setSubmitting(false);
           setIsSave(true);
+          setMessage(true);
         }, 500);
       }}
     >
@@ -121,7 +131,7 @@ const FormAddUser = () => {
               "Salva"
             )}
           </Button>
-          {isSave && (
+          {message && (
             <p className="text-green-500">Utente salvato con successo</p>
           )}
         </Form>
