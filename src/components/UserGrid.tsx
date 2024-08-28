@@ -68,7 +68,7 @@ const UserGrid = ({ noButton }: { noButton?: boolean }) => {
       {/* compare solo se viene selezionato un utente */}
       <FormAddHours
         nameUser={nameUser}
-        handleHours={handleAddHours}
+        handleAddHours={handleAddHours}
         //  CONTROLLA BENE QUESTO, NON LO CAPISCO BENE
         isVisible={!!selectedUser}
       />
