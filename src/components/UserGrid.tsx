@@ -2,7 +2,7 @@ import { useGlobalContext } from "@/utils/contex";
 import SingleUser from "./SingleUser";
 import { useState } from "react";
 
-const UserGrid = () => {
+const UserGrid = ({ noButton }: { noButton?: boolean }) => {
   const { dataUser, setDataUser } = useGlobalContext();
   const [messageUser, setMessageUser] = useState("Ecco tutti gli utenti:");
 
@@ -38,6 +38,7 @@ const UserGrid = () => {
               key={utente.id}
               {...utente}
               remove={() => removeUser(utente.id, utente.name)}
+              noButton={noButton}
             />
           ))}
       </section>

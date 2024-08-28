@@ -9,6 +9,7 @@ interface SingleUserProps {
   anniServizio: string;
   contratto: string;
   remove: () => void;
+  noButton?: boolean;
 }
 
 const SingleUser: React.FC<SingleUserProps> = ({
@@ -16,12 +17,14 @@ const SingleUser: React.FC<SingleUserProps> = ({
   anniServizio,
   contratto,
   remove,
+  noButton
 }) => {
   return (
     <>
       <article className="relative rounded-md border p-4 text-sm shadow-md">
         {/* bottone per eliminare singolo user */}
-        <Button
+        {!noButton && (
+          <Button
           size={"sm"}
           variant={"destructive"}
           className="absolute right-0 top-0"
@@ -29,6 +32,8 @@ const SingleUser: React.FC<SingleUserProps> = ({
         >
           X
         </Button>
+        )}
+        
         <h2 className="capitalize">Nome: {name}</h2>
         <p>Anni di lavoro: {anniServizio}</p>
         <p>Contratto: {contratto}</p>
