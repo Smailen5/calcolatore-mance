@@ -1,13 +1,14 @@
 import { useGlobalContext } from "@/utils/contex";
 import SingleUser from "./SingleUser";
 import { useState } from "react";
-import { Button } from "./ui/button";
+// import { Button } from "./ui/button";
+import FormAddHours from "./FormAddHours";
 
 const UserGrid = ({ noButton }: { noButton?: boolean }) => {
   const { dataUser, setDataUser, setIsSave } = useGlobalContext();
   const [messageUser, setMessageUser] = useState("Ecco tutti gli utenti:");
-  const [selectedUser, setSelectedUser] = useState<string | null>(null);
-  const [nameUser, setNameUser] = useState<string | null>(null);
+  const [selectedUser, setSelectedUser] = useState<string>("");
+  const [nameUser, setNameUser] = useState<string>("");
   const [hours, setHours] = useState<number | "">("");
 
   // se non ci sono user visualizza un messaggio
@@ -19,7 +20,7 @@ const UserGrid = ({ noButton }: { noButton?: boolean }) => {
   const removeUser = (id: string, name: string) => {
     const newUserList = dataUser.filter((user) => user.id !== id);
     setDataUser(newUserList);
-    setIsSave(true)
+    setIsSave(true);
     // aggiungi un messaggio di conferma con setTimeout
     setMessageUser(`Utente eliminato: ${name} 👋`);
     console.log(name);
@@ -36,6 +37,7 @@ const UserGrid = ({ noButton }: { noButton?: boolean }) => {
       setSelectedUser(id);
       setNameUser(selectedUser.name);
     }
+    return nameUser;
   };
 
   // gestisce l'inserimento delle ore
@@ -55,31 +57,19 @@ const UserGrid = ({ noButton }: { noButton?: boolean }) => {
       setDataUser(updatedUserList);
       setIsSave(true);
       setHours(""); // resetta input ore
-      setNameUser(null); // resetta nome utente
-      setSelectedUser(null); // resetta utente selezionato
+      setNameUser(""); // resetta nome utente
+      setSelectedUser(""); // resetta utente selezionato
     }
   };
 
   return (
     <>
-      {/* input per aggiungere le ore solo se ce un utente selezionato */}
-      {selectedUser && (
-        <div className="flex flex-col gap-2">
-          <h3>
-            Utente selezionato:{" "}
-            <span className="font-bold capitalize">{nameUser}</span>
-          </h3>
-          <input
-            type="number"
-            value={hours === 0 ? "" : hours}
-            onChange={(e) => setHours(Number(e.target.value))}
-            placeholder="Inserisci le ore lavorate"
-            className="w-full rounded-md border border-slate-300 p-2"
-          />
-
-          <Button onClick={handleAddHours}>aggiungi ore</Button>
-        </div>
-      )}
+      {/* compare solo se viene selezionato un utente */}
+      <FormAddHours
+        nameUser={nameUser}
+        handleHours={handleAddHours}
+        isVisible={selectedUser}
+      />
       {/* messaggio dinamico che cambia se viene eliminato un user */}
       <p className="text-center">{messageUser}</p>
       <section className="grid grid-cols-2 gap-2">
