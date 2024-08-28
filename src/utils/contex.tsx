@@ -20,6 +20,7 @@ interface UserFormValues {
   name: string;
   anniServizio: string;
   contratto: string;
+  oreLavorate?: number;
 }
 
 interface AppProviderProps {
