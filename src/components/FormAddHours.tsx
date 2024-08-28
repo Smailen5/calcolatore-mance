@@ -3,13 +3,13 @@ import { useGlobalContext } from "../utils/contex";
 
 type FormAddHoursProps = {
   nameUser: string;
-  handleHours: () => void;
+  handleAddHours: () => void;
   isVisible: boolean;
 };
 
 const FormAddHours: React.FC<FormAddHoursProps> = ({
   nameUser,
-  handleHours,
+  handleAddHours,
   isVisible,
 }) => {
   const { hours, setHours } = useGlobalContext();
@@ -29,7 +29,7 @@ const FormAddHours: React.FC<FormAddHoursProps> = ({
             placeholder="Inserisci le ore lavorate"
             className="w-full rounded-md border border-slate-300 p-2"
           />
-          <Button onClick={() => handleHours()}>Aggiungi ore</Button>
+          <Button onClick={() => handleAddHours()}>Aggiungi ore</Button>
         </div>
       )}
     </>
