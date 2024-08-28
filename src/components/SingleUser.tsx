@@ -21,12 +21,12 @@ const SingleUser: React.FC<SingleUserProps> = ({
   onSelect,
   noButton,
 }) => {
-
   // impedisce che al click si attivi anche l'evento sottostante dell'elemento in cui si trova
-  const handleRemove = (e:React.MouseEvent)=>{
-    e.stopPropagation()
-    remove()
-  }
+  const handleRemove = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    remove();
+  };
+
   return (
     <>
       <article
