@@ -13,11 +13,15 @@ type AppContextType = {
   setDataUser: React.Dispatch<React.SetStateAction<UserFormValues[]>>;
   isSave?: boolean;
   setIsSave: React.Dispatch<React.SetStateAction<boolean>>;
-  hours?:number;
-  setHours:React.Dispatch<React.SetStateAction<number>>;
+  hours?: number;
+  setHours: React.Dispatch<React.SetStateAction<number>>;
+  dataUserHoursSession?: UserFormValues[];
+  setDataUserHoursSession: React.Dispatch<
+    React.SetStateAction<UserFormValues[]>
+  >;
 };
 
-interface UserFormValues {
+export interface UserFormValues {
   id: string;
   name: string;
   anniServizio: string;
@@ -67,6 +71,10 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   // controlla il salvataggio degli utenti
   const [isSave, setIsSave] = useState(false);
   const [hours, setHours] = useState<number>(0);
+  // salva in session storage i dati degli utenti
+  const [dataUserHoursSession, setDataUserHoursSession] = useState<
+    UserFormValues[]
+  >([]);
 
   // recupera e salva i dati da localStorage nello stato al caricamento della pagina
   useEffect(() => {
@@ -87,9 +95,41 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     }
   }, [isSave, dataUser]);
 
+  // RECUPERA I DATI IN SESSION STORAGE ALTRIMENTI LI RECUPERA DA LOCAL STORAGE
+  useEffect(() => {
+    const storeData = sessionStorage.getItem("user");
+    if (storeData) {
+      setDataUserHoursSession(JSON.parse(storeData));
+      console.log("dati recuperati da sessionStorage");
+    } else {
+      console.log("non ci sono dati in sessionStorage");
+    }
+  }, []);
+
+  // SALVA I DATI CON LE ORE IN SESSION STORAGE
+  useEffect(() => {
+    if (isSave) {
+      sessionStorage.setItem("user", JSON.stringify(dataUserHoursSession));
+      const timer = setTimeout(() => {
+        setIsSave(false);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [isSave, dataUserHoursSession]);
+
   return (
     <AppContext.Provider
-      value={{ spazioOccupato, dataUser, setDataUser, isSave, setIsSave, hours, setHours }}
+      value={{
+        spazioOccupato,
+        dataUser,
+        setDataUser,
+        isSave,
+        setIsSave,
+        hours,
+        setHours,
+        dataUserHoursSession,
+        setDataUserHoursSession,
+      }}
     >
       {children}
     </AppContext.Provider>
