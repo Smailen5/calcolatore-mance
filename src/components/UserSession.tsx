@@ -1,4 +1,4 @@
-import { useGlobalContext } from "../utils/contex";
+import { useGlobalContext } from "../utils/context";
 import FormAddHours from "./FormAddHours";
 import UserGrid from "./UserGrid";
 

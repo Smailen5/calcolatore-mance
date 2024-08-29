@@ -1,4 +1,4 @@
-import { useGlobalContext, UserFormValues } from "@/utils/contex";
+import { useGlobalContext, UserFormValues } from "@/utils/context";
 import { useState } from "react";
 import SingleUser from "./SingleUser";
 

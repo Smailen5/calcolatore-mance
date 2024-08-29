@@ -1,5 +1,5 @@
 import { Button } from "./ui/button";
-import { useGlobalContext } from "../utils/contex";
+import { useGlobalContext } from "../utils/context";
 import { useEffect, useState } from "react";
 import { Cross1Icon } from "@radix-ui/react-icons";
 

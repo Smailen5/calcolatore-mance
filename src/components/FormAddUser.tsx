@@ -2,7 +2,7 @@ import CircleLoading from "@/components/CircleLoading";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { number, object, string } from "yup";
 import { Button } from "../components/ui/button";
-import { useGlobalContext } from "../utils/contex";
+import { useGlobalContext } from "../utils/context";
 import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
 
