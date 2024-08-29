@@ -1,6 +1,7 @@
 import { useGlobalContext, UserFormValues } from "@/utils/context";
 import { useState } from "react";
 import SingleUser from "./SingleUser";
+import { removeUser } from "@/utils/utente/rimuoviUtente";
 
 type UserGridProps = {
   noButton?: boolean;
@@ -18,20 +19,6 @@ const UserGrid = ({ noButton, data, selectable }: UserGridProps) => {
     return <p className="text-center">Non hai ancora aggiunto dipendenti</p>;
   }
 
-  // rimuove user selezionato e aggiorna i dati
-  const removeUser = (id: string, name: string) => {
-    const newUserList = data.filter((user) => user.id !== id);
-    setDataUser(newUserList);
-    setIsSave(true);
-    // aggiungi un messaggio di conferma con setTimeout
-    setMessageUser(`Utente eliminato: ${name} 👋`);
-    console.log(name);
-    const timer = setTimeout(() => {
-      setMessageUser("Ecco tutti gli utenti:");
-    }, 1500);
-    return () => clearTimeout(timer);
-  };
-
   // gestisce la selezione del user
   const handleSelectUser = (id: string) => {
     const selectedUser = data.find((user) => user.id === id);
@@ -42,7 +29,18 @@ const UserGrid = ({ noButton, data, selectable }: UserGridProps) => {
       setNameUser(selectedUser.name);
       console.log("utente selezionato");
     }
-    // return nameUser;
+  };
+
+  // rimuove user selezionato e aggiorna i dati
+  const handleRimuoviUtente = (id: string, name: string) => {
+    removeUser({
+      id,
+      name,
+      data,
+      setIsSave,
+      setMessageUser,
+      setDataUser,
+    });
   };
 
   return (
@@ -55,7 +53,7 @@ const UserGrid = ({ noButton, data, selectable }: UserGridProps) => {
             <SingleUser
               key={utente.id}
               {...utente}
-              remove={() => removeUser(utente.id, utente.name)}
+              remove={() => handleRimuoviUtente(utente.id, utente.name)}
               selectable={selectable}
               onSelect={() => handleSelectUser(utente.id)}
               noButton={noButton}
