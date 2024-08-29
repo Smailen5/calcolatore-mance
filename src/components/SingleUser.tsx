@@ -8,7 +8,7 @@ interface SingleUserProps {
   name: string;
   anniServizio: string;
   contratto: string;
-  remove: () => void;
+  remove?: () => void;
   onSelect?: () => void;
   noButton?: boolean;
   oreLavorate?: number;
@@ -26,7 +26,9 @@ const SingleUser: React.FC<SingleUserProps> = ({
   // impedisce che al click si attivi anche l'evento sottostante dell'elemento in cui si trova
   const handleRemove = (e: React.MouseEvent) => {
     e.stopPropagation();
-    remove();
+    if (remove) {
+      remove();
+    }
   };
 
   return (
