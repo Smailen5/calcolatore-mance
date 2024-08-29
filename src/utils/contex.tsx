@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { recuperaUtenti, recuperaUtentiProps } from "./recuperaUtenti";
 
 type AppContextType = {
   sizeInReadableUnits?: string;
@@ -23,6 +24,7 @@ type AppContextType = {
   setSelectedUser: (id: string) => void;
   nameUser: string;
   setNameUser: (name: string) => void;
+  recuperaUtenti?: (data: recuperaUtentiProps) => void;
 };
 
 export interface UserFormValues {
@@ -82,7 +84,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [selectedUser, setSelectedUser] = useState<string>("");
   const [nameUser, setNameUser] = useState<string>("");
 
-  // recupera localStorage
+  // recupera dati localStorage
   useEffect(() => {
     const storeData = localStorage.getItem("user");
     if (storeData) {
@@ -91,7 +93,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     }
   }, []);
 
-  // Salva i dati in localStorage e sessionStorage quando `isSave` è vero
+  // Salva dati localStorage
   useEffect(() => {
     if (isSave) {
       localStorage.setItem("user", JSON.stringify(dataUser));
@@ -103,26 +105,23 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   }, [isSave, dataUser]);
 
   // RECUPERA I DATI IN SESSION STORAGE ALTRIMENTI LI RECUPERA DA LOCAL STORAGE
-  // useEffect(() => {
-  //   const storeData = sessionStorage.getItem("user");
-  //   if (storeData) {
-  //     setDataUserHoursSession(JSON.parse(storeData));
-  //     // console.log("dati recuperati da sessionStorage");
-  //   } else {
-  //     // console.log("non ci sono dati in sessionStorage");
-  //   }
-  // }, []);
+  useEffect(() => {
+    const storeData = sessionStorage.getItem("user");
+    if (storeData) {
+      setDataUserHoursSession(JSON.parse(storeData));
+    }
+  }, []);
 
   // SALVA I DATI CON LE ORE IN SESSION STORAGE
-  // useEffect(() => {
-  //   if (isSave) {
-  //     sessionStorage.setItem("user", JSON.stringify(dataUserHoursSession));
-  //     const timer = setTimeout(() => {
-  //       setIsSave(false);
-  //     }, 1000);
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [isSave, dataUserHoursSession]);
+  useEffect(() => {
+    if (isSave) {
+      sessionStorage.setItem("user", JSON.stringify(dataUserHoursSession));
+      const timer = setTimeout(() => {
+        setIsSave(false);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [isSave, dataUserHoursSession]);
 
   return (
     <AppContext.Provider
@@ -140,6 +139,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         setSelectedUser,
         nameUser,
         setNameUser,
+        recuperaUtenti,
       }}
     >
       {children}
