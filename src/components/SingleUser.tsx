@@ -51,7 +51,13 @@ const SingleUser: React.FC<SingleUserProps> = ({
         <p>Anni di lavoro: {anniServizio}</p>
         <p>Contratto: {contratto}</p>
         {/* <p>Ore lavorate: {oreLavorate ? oreLavorate : 'aggiungi'}</p> */}
-        {oreLavorate ? <p>Ore lavorate: {oreLavorate}</p> : "Ore mancanti"}
+        {oreLavorate ? (
+          <p>
+            Ore lavorate: <span className="font-semibold">{oreLavorate}</span>
+          </p>
+        ) : (
+          <p className="font-semibold text-destructive">Ore mancanti</p>
+        )}
       </article>
     </>
   );
