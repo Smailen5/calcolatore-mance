@@ -99,7 +99,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       localStorage.setItem("user", JSON.stringify(dataUser));
       const timer = setTimeout(() => {
         setIsSave(false);
-      }, 1000);
+      }, 500);
       return () => clearTimeout(timer);
     }
   }, [isSave, dataUser]);
@@ -118,7 +118,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       sessionStorage.setItem("user", JSON.stringify(dataUserHoursSession));
       const timer = setTimeout(() => {
         setIsSave(false);
-      }, 1000);
+      }, 500);
       return () => clearTimeout(timer);
     }
   }, [isSave, dataUserHoursSession]);
