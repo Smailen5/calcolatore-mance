@@ -9,6 +9,7 @@ interface SingleUserProps {
   anniServizio: string;
   contratto: string;
   remove?: () => void;
+  selectable?: boolean;
   onSelect?: () => void;
   noButton?: boolean;
   oreLavorate?: number;
@@ -19,6 +20,7 @@ const SingleUser: React.FC<SingleUserProps> = ({
   anniServizio,
   contratto,
   remove,
+  selectable,
   onSelect,
   noButton,
   oreLavorate,
@@ -31,10 +33,18 @@ const SingleUser: React.FC<SingleUserProps> = ({
     }
   };
 
+  const handleSelected = () => {
+    if (selectable) {
+      if (onSelect) {
+        onSelect();
+      }
+    }
+  };
+
   return (
     <>
       <article
-        onClick={onSelect}
+        onClick={handleSelected}
         className="relative rounded-md border p-4 text-sm shadow-md"
       >
         {/* bottone per eliminare singolo user */}
