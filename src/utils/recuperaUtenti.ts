@@ -3,9 +3,10 @@ import { UserFormValues } from "./contex";
 
 export type recuperaUtentiProps = {
   data?: Dispatch<SetStateAction<UserFormValues[]>>; // Accetta un array di UserFormValues
+  setIsSave: Dispatch<SetStateAction<boolean>>;
 };
 
-export const recuperaUtenti = ({ data }: recuperaUtentiProps) => {
+export const recuperaUtenti = ({ data, setIsSave }: recuperaUtentiProps) => {
   console.log("recuperaUtenti chiamata");
 
   const storeData = localStorage.getItem("user");
@@ -28,7 +29,7 @@ export const recuperaUtenti = ({ data }: recuperaUtentiProps) => {
             // Filtra gli utenti recuperati da localStorage per aggiungere solo quelli nuovi
             !prevData.some((existingUser) => existingUser.id === user.id),
         );
-
+        setIsSave(true);
         return [...usersToKeep, ...newUsers];
       });
       console.log("dati utente aggiornati", users);

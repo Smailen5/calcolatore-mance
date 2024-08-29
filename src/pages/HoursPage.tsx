@@ -1,19 +1,18 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Page from "@/components/Page";
-import UserSession from "@/components/UserSession";
-// import { useEffect } from "react";
-import { useGlobalContext } from "@/utils/contex";
 import { Button } from "@/components/ui/button";
+import UserSession from "@/components/UserSession";
+import { useGlobalContext } from "@/utils/contex";
 import { useState } from "react";
 
 const HoursPage = () => {
-  const { setDataUserHoursSession, recuperaUtenti } = useGlobalContext();
+  const { setDataUserHoursSession, recuperaUtenti, setIsSave } = useGlobalContext();
   const [isVisible, setIsVisible] = useState(true);
 
   const handleRecuperaUtenti = () => {
     if (recuperaUtenti) {
-      recuperaUtenti({ data: setDataUserHoursSession });
+      recuperaUtenti({ data: setDataUserHoursSession, setIsSave });
       setIsVisible(false);
     }
   };
