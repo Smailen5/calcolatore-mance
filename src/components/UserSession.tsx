@@ -3,23 +3,23 @@ import FormAddHours from "./FormAddHours";
 import UserGrid from "./UserGrid";
 
 const UserSession = () => {
-  const { selectedUser, setSelectedUser, nameUser, setNameUser } =
-    useGlobalContext();
-
   const {
     hours,
-    dataUser,
     dataUserHoursSession,
     setDataUserHoursSession,
     setIsSave,
     setHours,
+    selectedUser,
+    setSelectedUser,
+    nameUser,
+    setNameUser,
   } = useGlobalContext();
 
   // gestisce l'inserimento delle ore
   const handleAddHours = () => {
     // Verifica che ci sia un utente selezionato e che l'input ore non sia vuoto
-    if (selectedUser && hours && dataUser) {
-      const updatedUserList = dataUser.map((user) => {
+    if (selectedUser && hours && dataUserHoursSession) {
+      const updatedUserList = dataUserHoursSession.map((user) => {
         if (user.id === selectedUser) {
           return {
             ...user,

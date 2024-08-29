@@ -2,9 +2,21 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Page from "@/components/Page";
 import UserSession from "@/components/UserSession";
+import { useEffect } from "react";
+import { useGlobalContext } from "@/utils/contex";
 
 const HoursPage = () => {
-  // const {dataUserHoursSession} = useGlobalContext()
+  const { setDataUserHoursSession } = useGlobalContext();
+
+  // aggiorna i dati in sessionStorage quando il sessionStorage cambia
+  useEffect(() => {
+    const storeData = localStorage.getItem("user");
+    if (storeData) {
+      const user = JSON.parse(storeData);
+      setDataUserHoursSession(user);
+    }
+  }, [setDataUserHoursSession]);
+
   return (
     <>
       <Navbar />

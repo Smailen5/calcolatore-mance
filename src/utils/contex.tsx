@@ -82,15 +82,16 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [selectedUser, setSelectedUser] = useState<string>("");
   const [nameUser, setNameUser] = useState<string>("");
 
-  // recupera e salva i dati da localStorage nello stato al caricamento della pagina
+  // recupera localStorage
   useEffect(() => {
     const storeData = localStorage.getItem("user");
     if (storeData) {
-      setDataUser(JSON.parse(storeData));
+      const user = JSON.parse(storeData);
+      setDataUser(user);
     }
   }, []);
 
-  // salva i dati in localStorage quando il valore di isSave o dataUser cambia
+  // Salva i dati in localStorage e sessionStorage quando `isSave` è vero
   useEffect(() => {
     if (isSave) {
       localStorage.setItem("user", JSON.stringify(dataUser));
@@ -102,26 +103,26 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   }, [isSave, dataUser]);
 
   // RECUPERA I DATI IN SESSION STORAGE ALTRIMENTI LI RECUPERA DA LOCAL STORAGE
-  useEffect(() => {
-    const storeData = sessionStorage.getItem("user");
-    if (storeData) {
-      setDataUserHoursSession(JSON.parse(storeData));
-      // console.log("dati recuperati da sessionStorage");
-    } else {
-      // console.log("non ci sono dati in sessionStorage");
-    }
-  }, []);
+  // useEffect(() => {
+  //   const storeData = sessionStorage.getItem("user");
+  //   if (storeData) {
+  //     setDataUserHoursSession(JSON.parse(storeData));
+  //     // console.log("dati recuperati da sessionStorage");
+  //   } else {
+  //     // console.log("non ci sono dati in sessionStorage");
+  //   }
+  // }, []);
 
   // SALVA I DATI CON LE ORE IN SESSION STORAGE
-  useEffect(() => {
-    if (isSave) {
-      sessionStorage.setItem("user", JSON.stringify(dataUserHoursSession));
-      const timer = setTimeout(() => {
-        setIsSave(false);
-      }, 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [isSave, dataUserHoursSession]);
+  // useEffect(() => {
+  //   if (isSave) {
+  //     sessionStorage.setItem("user", JSON.stringify(dataUserHoursSession));
+  //     const timer = setTimeout(() => {
+  //       setIsSave(false);
+  //     }, 1000);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [isSave, dataUserHoursSession]);
 
   return (
     <AppContext.Provider
@@ -157,4 +158,3 @@ const useGlobalContext = () => {
 
 // eslint-disable-next-line react-refresh/only-export-components
 export { AppProvider, useGlobalContext };
-
