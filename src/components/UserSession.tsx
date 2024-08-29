@@ -47,7 +47,6 @@ const UserSession = () => {
           isVisible={!!selectedUser}
         />
       </div>
-
       <UserGrid data={dataUserHoursSession} noButton={true} selectable={true} />
     </>
   );

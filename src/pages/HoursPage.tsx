@@ -23,7 +23,6 @@ const HoursPage = () => {
       <Page>
         <h2>Seleziona un utente per aggiungere/modificare le ore</h2>
         <UserSession />
-        {/* <UserGrid data={dataUserHoursSession} /> */}
       </Page>
       <Footer />
     </>
