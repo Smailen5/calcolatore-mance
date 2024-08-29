@@ -19,6 +19,10 @@ type AppContextType = {
   setDataUserHoursSession: React.Dispatch<
     React.SetStateAction<UserFormValues[]>
   >;
+  selectedUser: string;
+  setSelectedUser: (id: string) => void;
+  nameUser: string;
+  setNameUser: (name: string) => void;
 };
 
 export interface UserFormValues {
@@ -75,6 +79,8 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [dataUserHoursSession, setDataUserHoursSession] = useState<
     UserFormValues[]
   >([]);
+  const [selectedUser, setSelectedUser] = useState<string>("");
+  const [nameUser, setNameUser] = useState<string>("");
 
   // recupera e salva i dati da localStorage nello stato al caricamento della pagina
   useEffect(() => {
@@ -100,9 +106,9 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     const storeData = sessionStorage.getItem("user");
     if (storeData) {
       setDataUserHoursSession(JSON.parse(storeData));
-      console.log("dati recuperati da sessionStorage");
+      // console.log("dati recuperati da sessionStorage");
     } else {
-      console.log("non ci sono dati in sessionStorage");
+      // console.log("non ci sono dati in sessionStorage");
     }
   }, []);
 
@@ -129,6 +135,10 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         setHours,
         dataUserHoursSession,
         setDataUserHoursSession,
+        selectedUser,
+        setSelectedUser,
+        nameUser,
+        setNameUser,
       }}
     >
       {children}
@@ -147,3 +157,4 @@ const useGlobalContext = () => {
 
 // eslint-disable-next-line react-refresh/only-export-components
 export { AppProvider, useGlobalContext };
+
