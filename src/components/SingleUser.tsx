@@ -11,6 +11,7 @@ interface SingleUserProps {
   remove: () => void;
   onSelect?: () => void;
   noButton?: boolean;
+  oreLavorate?: number;
 }
 
 const SingleUser: React.FC<SingleUserProps> = ({
@@ -20,6 +21,7 @@ const SingleUser: React.FC<SingleUserProps> = ({
   remove,
   onSelect,
   noButton,
+  oreLavorate,
 }) => {
   // impedisce che al click si attivi anche l'evento sottostante dell'elemento in cui si trova
   const handleRemove = (e: React.MouseEvent) => {
@@ -48,6 +50,8 @@ const SingleUser: React.FC<SingleUserProps> = ({
         <h2 className="capitalize">Nome: {name}</h2>
         <p>Anni di lavoro: {anniServizio}</p>
         <p>Contratto: {contratto}</p>
+        {/* <p>Ore lavorate: {oreLavorate ? oreLavorate : 'aggiungi'}</p> */}
+        {oreLavorate ? <p>Ore lavorate: {oreLavorate}</p> : "Ore mancanti"}
       </article>
     </>
   );
