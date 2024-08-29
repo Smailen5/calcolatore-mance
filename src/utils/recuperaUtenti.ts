@@ -13,11 +13,23 @@ export const recuperaUtenti = ({ data }: recuperaUtentiProps) => {
     const users = JSON.parse(storeData) as UserFormValues[];
     if (data) {
       data((prevData) => {
-        // prende id utenti gia esistenti
-        const existingUserIds = new Set(prevData.map((user) => user.id));
-        // filtra solo gli utenti che non sono gia presenti
-        const newUsers = users.filter((user) => !existingUserIds.has(user.id));
-        return [...prevData, ...newUsers];
+        // Crea un set degli ID degli utenti recuperati
+        const updatedUserIds = new Set(users.map((user) => user.id));
+
+        // Filtra e conserva solo gli utenti esistenti che sono anche in localStorage
+        const usersToKeep = prevData.filter((user) =>
+          // Mantieni solo gli utenti che hanno un ID che esiste anche nel set di updateUserIds
+          updatedUserIds.has(user.id),
+        );
+
+        // Aggiungi solo i nuovi utenti che non sono presenti in prevData
+        const newUsers = users.filter(
+          (user) =>
+            // Filtra gli utenti recuperati da localStorage per aggiungere solo quelli nuovi
+            !prevData.some((existingUser) => existingUser.id === user.id),
+        );
+
+        return [...usersToKeep, ...newUsers];
       });
       console.log("dati utente aggiornati", users);
     } else {
