@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { UserFormValues } from "./contex";
+import { UserFormValues } from "../contex";
 
 export type recuperaUtentiProps = {
   data?: Dispatch<SetStateAction<UserFormValues[]>>; // Accetta un array di UserFormValues

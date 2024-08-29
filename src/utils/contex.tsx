@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { recuperaUtenti, recuperaUtentiProps } from "./recuperaUtenti";
+import { recuperaUtenti, recuperaUtentiProps } from "./utente/recuperaUtenti";
 
 type AppContextType = {
   sizeInReadableUnits?: string;
