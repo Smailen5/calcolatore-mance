@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
 import FormDividiMancia from "@/components/FormDividiMancia";
 import Navbar from "@/components/Navbar";
-import { useGlobalContext } from "@/utils/contex";
+import { useGlobalContext } from "@/utils/context";
 
 const Home = () => {
   const { dataUser } = useGlobalContext();

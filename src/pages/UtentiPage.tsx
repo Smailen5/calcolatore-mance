@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import FormAddUser from "@/components/FormAddUser";
 import Navbar from "@/components/Navbar";
 import UserGrid from "@/components/UserGrid";
-import { useGlobalContext } from "@/utils/contex";
+import { useGlobalContext } from "@/utils/context";
 
 const UtentiPage = () => {
   const { dataUser } = useGlobalContext()
