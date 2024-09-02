@@ -52,7 +52,7 @@ const SingleUser: React.FC<SingleUserProps> = ({
           <Button
             size={"sm"}
             variant={"destructive"}
-            className="absolute right-0 top-0"
+            className="absolute right-1 top-1"
             onClick={handleRemove}
           >
             X
