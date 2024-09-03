@@ -13,6 +13,7 @@ interface SingleUserProps {
   onSelect?: () => void;
   noButton?: boolean;
   oreLavorate?: number;
+  isHours?: boolean;
 }
 
 const SingleUser: React.FC<SingleUserProps> = ({
@@ -24,6 +25,7 @@ const SingleUser: React.FC<SingleUserProps> = ({
   onSelect,
   noButton,
   oreLavorate,
+  isHours,
 }) => {
   // impedisce che al click si attivi anche l'evento sottostante dell'elemento in cui si trova
   const handleRemove = (e: React.MouseEvent) => {
@@ -40,6 +42,8 @@ const SingleUser: React.FC<SingleUserProps> = ({
       }
     }
   };
+
+  console.log(`isHours: ${isHours} selectable: ${selectable}`);
 
   return (
     <>
@@ -60,9 +64,17 @@ const SingleUser: React.FC<SingleUserProps> = ({
         )}
 
         <h2 className="capitalize">Nome: {name}</h2>
-        <p>Anni di lavoro: {anniServizio}</p>
-        <p>Contratto: {contratto}</p>
-        {selectable &&
+        {/* se isHours non e definito mostra tutte le informazioni */}
+        {!isHours && (
+          <>
+            <p>Anni di lavoro: {anniServizio}</p>
+            <p>Contratto: {contratto}</p>
+          </>
+        )}
+
+        {/* CHIEDI CONSIGLIO IN QUALCHE GRUPPO */}
+        {/* Bel casino, in sostanza ritorna sempre il componente ma se selectable e true permette di selezionarlo */}
+        {(isHours || selectable) &&
           (oreLavorate ? (
             <p>
               Ore lavorate: <span className="font-semibold">{oreLavorate}</span>
