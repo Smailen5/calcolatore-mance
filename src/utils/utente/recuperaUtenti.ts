@@ -7,8 +7,6 @@ export type recuperaUtentiProps = {
 };
 
 export const recuperaUtenti = ({ data, setIsSave }: recuperaUtentiProps) => {
-  console.log("recuperaUtenti chiamata");
-
   const storeData = localStorage.getItem("user");
   if (storeData) {
     const users = JSON.parse(storeData) as UserFormValues[];
