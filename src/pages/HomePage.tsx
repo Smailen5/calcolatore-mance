@@ -1,3 +1,4 @@
+import CalcolatoreOre from "@/components/CalcolatoreOre";
 import Footer from "@/components/Footer";
 import FormDividiMancia from "@/components/FormDividiMancia";
 import Navbar from "@/components/Navbar";
@@ -29,6 +30,7 @@ const Home = () => {
           </h1>
         )}
         <FormDividiMancia />
+        <CalcolatoreOre />
       </main>
       <Footer />
     </>
