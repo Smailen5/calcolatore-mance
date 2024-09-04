@@ -14,6 +14,7 @@ interface SingleUserProps {
   noButton?: boolean;
   oreLavorate?: number;
   isHours?: boolean;
+  mancia?: number;
 }
 
 const SingleUser: React.FC<SingleUserProps> = ({
@@ -26,6 +27,7 @@ const SingleUser: React.FC<SingleUserProps> = ({
   noButton,
   oreLavorate,
   isHours,
+  mancia,
 }) => {
   // impedisce che al click si attivi anche l'evento sottostante dell'elemento in cui si trova
   const handleRemove = (e: React.MouseEvent) => {
@@ -43,13 +45,13 @@ const SingleUser: React.FC<SingleUserProps> = ({
     }
   };
 
-  console.log(`isHours: ${isHours} selectable: ${selectable}`);
+  // console.log(`isHours: ${isHours} selectable: ${selectable}`);
 
   return (
     <>
       <article
         onClick={handleSelected}
-        className="relative rounded-md border p-4 text-sm shadow-md"
+        className={`relative rounded-md border p-4 text-sm shadow-md ${selectable && "cursor-pointer"}`}
       >
         {/* bottone per eliminare singolo user */}
         {!noButton && (
@@ -82,6 +84,13 @@ const SingleUser: React.FC<SingleUserProps> = ({
           ) : (
             <p className="font-semibold text-destructive">Ore mancanti</p>
           ))}
+
+        {/* se mancia esiste mostrala */}
+        {mancia && (
+          <p>
+            Mancia: <span className="font-semibold">{mancia}</span>
+          </p>
+        )}
       </article>
     </>
   );
