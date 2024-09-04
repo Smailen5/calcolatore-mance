@@ -13,7 +13,6 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      {/* <main className="flex min-h-[86vh] flex-col items-center justify-center gap-8 px-4 py-8"> */}
       <Page>
         {!dataUser || dataUser.length === 0 ? (
           <>
@@ -36,7 +35,6 @@ const Home = () => {
         <FormDividiMancia setManciaTotale={setManciaTotale} />
         <CalcolatoreOre manciaTotale={manciaTotale} />
       </Page>
-      {/* </main> */}
       <Footer />
     </>
   );

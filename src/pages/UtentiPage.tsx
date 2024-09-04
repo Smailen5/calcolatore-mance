@@ -10,12 +10,10 @@ const UtentiPage = () => {
   return (
     <>
       <Navbar />
-      {/* <main className="flex min-h-[86vh] flex-col justify-center gap-8 px-4 py-8"> */}
       <Page>
         <FormAddUser />
         <UserGrid data={dataUser} />
       </Page>
-      {/* </main> */}
       <Footer />
     </>
   );
