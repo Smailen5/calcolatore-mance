@@ -10,12 +10,19 @@ const initialValues = {
   mancia: "",
 };
 
-const FormDividiMancia = () => {
+type FormDividiManciaProps = {
+  setManciaTotale: React.Dispatch<React.SetStateAction<number>>
+}
+
+const FormDividiMancia:React.FC<FormDividiManciaProps> = ({setManciaTotale}) => {
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={() => {}}
+      onSubmit={(values) => {
+        const mancia = parseFloat(values.mancia);
+        setManciaTotale(mancia)
+      }}
     >
       {() => (
         <Form className="flex flex-col items-start gap-4 rounded-md bg-white p-4 shadow-lg">
