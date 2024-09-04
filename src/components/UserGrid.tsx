@@ -28,7 +28,7 @@ const UserGrid = ({ noButton, data, selectable, isHours }: UserGridProps) => {
     if (selectedUser) {
       setSelectedUser(selectedUser.id);
       setNameUser(selectedUser.name);
-      console.log("utente selezionato");
+      // console.log("utente selezionato");
     }
   };
 

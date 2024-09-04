@@ -30,7 +30,7 @@ export const recuperaUtenti = ({ data, setIsSave }: recuperaUtentiProps) => {
         setIsSave(true);
         return [...usersToKeep, ...newUsers];
       });
-      console.log("dati utente aggiornati", users);
+      // console.log("dati utente aggiornati", users);
     } else {
       console.log("nessun dato trovato");
     }
