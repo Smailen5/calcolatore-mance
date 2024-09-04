@@ -59,7 +59,7 @@ const FormAddUser = () => {
     >
       {({ handleSubmit, isSubmitting }) => (
         <Form
-          className="flex flex-col items-start gap-4 rounded-md bg-white p-4 shadow-lg lg:flex-1"
+          className="flex flex-col items-start gap-4 rounded-md border bg-white p-4 shadow-lg lg:flex-1"
           onSubmit={handleSubmit}
           noValidate
         >
