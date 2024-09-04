@@ -46,8 +46,6 @@ const SingleUser: React.FC<SingleUserProps> = ({
     }
   };
 
-  // console.log(`isHours: ${isHours} selectable: ${selectable}`);
-
   return (
     <>
       <CardSingleUser handleSelected={handleSelected} selectable={selectable}>
@@ -84,11 +82,11 @@ const SingleUser: React.FC<SingleUserProps> = ({
           ))}
 
         {/* se mancia esiste mostrala */}
-        {mancia && (
+        {mancia !== 0 ? (
           <p>
             Mancia: <span className="font-semibold">{mancia}</span>
           </p>
-        )}
+        ): null}
       </CardSingleUser>
     </>
   );
