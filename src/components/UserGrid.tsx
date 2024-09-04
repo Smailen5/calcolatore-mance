@@ -47,7 +47,7 @@ const UserGrid = ({ noButton, data, selectable, isHours }: UserGridProps) => {
   return (
     <>
       <p className="text-center">{messageUser}</p>
-      <section className="grid grid-cols-2 gap-2">
+      <section className="grid grid-cols-2 gap-2 md:grid-cols-4">
         {data &&
           data.length > 0 &&
           data.map((utente) => (
