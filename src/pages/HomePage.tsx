@@ -4,15 +4,17 @@ import FormDividiMancia from "@/components/FormDividiMancia";
 import Navbar from "@/components/Navbar";
 import { useGlobalContext } from "@/utils/context";
 import { useState } from "react";
+import Page from "../components/Page";
 
 const Home = () => {
   const { dataUser } = useGlobalContext();
-  const [manciaTotale, setManciaTotale] = useState(0)
+  const [manciaTotale, setManciaTotale] = useState(0);
 
   return (
     <>
       <Navbar />
-      <main className="flex min-h-[86vh] flex-col items-center justify-center gap-8 px-4 py-8">
+      {/* <main className="flex min-h-[86vh] flex-col items-center justify-center gap-8 px-4 py-8"> */}
+      <Page>
         {!dataUser || dataUser.length === 0 ? (
           <>
             <h1 className="text-center text-3xl font-bold">
@@ -33,7 +35,8 @@ const Home = () => {
         )}
         <FormDividiMancia setManciaTotale={setManciaTotale} />
         <CalcolatoreOre manciaTotale={manciaTotale} />
-      </main>
+      </Page>
+      {/* </main> */}
       <Footer />
     </>
   );
