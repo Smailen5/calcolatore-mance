@@ -3,9 +3,11 @@ import Footer from "@/components/Footer";
 import FormDividiMancia from "@/components/FormDividiMancia";
 import Navbar from "@/components/Navbar";
 import { useGlobalContext } from "@/utils/context";
+import { useState } from "react";
 
 const Home = () => {
   const { dataUser } = useGlobalContext();
+  const [manciaTotale, setManciaTotale] = useState(0)
 
   return (
     <>
@@ -29,8 +31,8 @@ const Home = () => {
               : "ce un solo utente salvato"}
           </h1>
         )}
-        <FormDividiMancia />
-        <CalcolatoreOre />
+        <FormDividiMancia setManciaTotale={setManciaTotale} />
+        <CalcolatoreOre manciaTotale={manciaTotale} />
       </main>
       <Footer />
     </>
