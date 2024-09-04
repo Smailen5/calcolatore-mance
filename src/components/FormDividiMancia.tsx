@@ -11,21 +11,23 @@ const initialValues = {
 };
 
 type FormDividiManciaProps = {
-  setManciaTotale: React.Dispatch<React.SetStateAction<number>>
-}
+  setManciaTotale: React.Dispatch<React.SetStateAction<number>>;
+};
 
-const FormDividiMancia:React.FC<FormDividiManciaProps> = ({setManciaTotale}) => {
+const FormDividiMancia: React.FC<FormDividiManciaProps> = ({
+  setManciaTotale,
+}) => {
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={(values) => {
         const mancia = parseFloat(values.mancia);
-        setManciaTotale(mancia)
+        setManciaTotale(mancia);
       }}
     >
       {() => (
-        <Form className="flex flex-col items-start gap-4 rounded-md bg-white p-4 shadow-lg">
+        <Form className="flex flex-col items-start gap-4 rounded-md border bg-white p-4 shadow-lg">
           <label htmlFor="mancia">Inserisci il totale delle mance</label>
           <Field
             type="number"
