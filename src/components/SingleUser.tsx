@@ -1,3 +1,4 @@
+import CardSingleUser from "./CardSingleUser";
 import { Button } from "./ui/button";
 
 /* 
@@ -49,10 +50,7 @@ const SingleUser: React.FC<SingleUserProps> = ({
 
   return (
     <>
-      <article
-        onClick={handleSelected}
-        className={`relative rounded-md border p-4 text-sm shadow-md ${selectable && "cursor-pointer"}`}
-      >
+      <CardSingleUser handleSelected={handleSelected} selectable={selectable}>
         {/* bottone per eliminare singolo user */}
         {!noButton && (
           <Button
@@ -91,7 +89,7 @@ const SingleUser: React.FC<SingleUserProps> = ({
             Mancia: <span className="font-semibold">{mancia}</span>
           </p>
         )}
-      </article>
+      </CardSingleUser>
     </>
   );
 };
