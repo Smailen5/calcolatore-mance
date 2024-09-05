@@ -62,8 +62,10 @@ const FormAddHours: React.FC<FormAddHoursProps> = ({
             <input
               type="number"
               name="oreLavorate"
+              autoFocus
               value={hours === 0 ? "" : hours}
               onChange={(e) => setHours(Number(e.target.value))}
+              onKeyDown={(e) => e.key === "Enter" && handleSaveHours()}
               placeholder="Inserisci le ore lavorate"
               className="mt-4 w-full rounded-md border border-slate-300 p-2"
             />
