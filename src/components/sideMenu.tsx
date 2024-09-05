@@ -10,7 +10,7 @@ const SideMenu = () => {
   };
   return (
     <>
-      <div onClick={handleClick}>Menu</div>
+      <div onClick={handleClick} className="cursor-pointer">Menu</div>
       {isOpen && (
         <div className="absolute left-0 top-0 h-screen w-full bg-white text-3xl">
           <div className="relative flex flex-col items-center justify-center">
