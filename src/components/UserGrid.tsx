@@ -8,9 +8,10 @@ type UserGridProps = {
   data?: UserFormValues[];
   selectable?: boolean;
   isHours?: boolean;
+  mostraMancia?: boolean;
 };
 
-const UserGrid = ({ noButton, data, selectable, isHours }: UserGridProps) => {
+const UserGrid = ({ noButton, data, selectable, isHours, mostraMancia }: UserGridProps) => {
   const { setDataUser, setIsSave, setSelectedUser, setNameUser } =
     useGlobalContext();
   const [messageUser, setMessageUser] = useState("Ecco tutti gli utenti:");
@@ -59,6 +60,7 @@ const UserGrid = ({ noButton, data, selectable, isHours }: UserGridProps) => {
               onSelect={() => handleSelectUser(utente.id)}
               noButton={noButton}
               isHours={isHours}
+              mostraMancia={mostraMancia}
             />
           ))}
       </section>

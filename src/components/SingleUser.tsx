@@ -16,6 +16,7 @@ interface SingleUserProps {
   oreLavorate?: number;
   isHours?: boolean;
   mancia?: number;
+  mostraMancia?: boolean;
 }
 
 const SingleUser: React.FC<SingleUserProps> = ({
@@ -29,6 +30,7 @@ const SingleUser: React.FC<SingleUserProps> = ({
   oreLavorate,
   isHours,
   mancia,
+  mostraMancia,
 }) => {
   // impedisce che al click si attivi anche l'evento sottostante dell'elemento in cui si trova
   const handleRemove = (e: React.MouseEvent) => {
@@ -82,11 +84,11 @@ const SingleUser: React.FC<SingleUserProps> = ({
           ))}
 
         {/* se mancia esiste mostrala */}
-        {mancia !== 0 ? (
+        {mostraMancia && (
           <p>
             Mancia: <span className="font-semibold">{mancia}</span>
           </p>
-        ): null}
+        )}
       </CardSingleUser>
     </>
   );
