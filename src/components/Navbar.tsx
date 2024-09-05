@@ -1,11 +1,13 @@
-import Menu from "./Menu";
+// import Menu from "./Menu";
+import SideMenu from "./SideMenu";
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between bg-secondary p-4 fixed top-0 w-full">
+    <nav className="flex justify-between bg-secondary p-4 fixed top-0 w-full z-20">
       <h1>Dividi Mance</h1>
       {/* aggiungi qui il componente menu per navigare fra le pagine */}
-      <Menu />
+      {/* <Menu /> */}
+      <SideMenu />
     </nav>
   );
 };
