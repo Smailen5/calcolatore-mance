@@ -24,7 +24,9 @@ const Menu = () => {
         <DropdownMenuItem>
           <Link to="/aggiungi-ore">Ore</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem><Link to="/tutorial">Tutorial</Link></DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/tutorial">Tutorial</Link>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
