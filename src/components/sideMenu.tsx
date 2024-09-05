@@ -12,7 +12,7 @@ const SideMenu = () => {
     <>
       <div onClick={handleClick}>Menu</div>
       {isOpen && (
-        <div className="absolute left-0 top-0 h-screen bg-white w-full text-3xl">
+        <div className="absolute left-0 top-0 h-screen w-full bg-white text-3xl">
           <div className="relative flex flex-col items-center justify-center">
             <Button onClick={handleClick} className="absolute right-4 top-4">
               Chiudi
