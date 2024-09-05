@@ -1,5 +1,5 @@
 // import Menu from "./Menu";
-import SideMenu from "./sideMenu";
+import SideMenu from "./SideMenu";
 
 const Navbar = () => {
   return (
