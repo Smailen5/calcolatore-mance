@@ -24,12 +24,10 @@ const UserGrid = ({ noButton, data, selectable, isHours, mostraMancia }: UserGri
   // gestisce la selezione del user
   const handleSelectUser = (id: string) => {
     const selectedUser = data.find((user) => user.id === id);
-    // console.log(selectedUser);
 
     if (selectedUser) {
       setSelectedUser(selectedUser.id);
       setNameUser(selectedUser.name);
-      // console.log("utente selezionato");
     }
   };
 
