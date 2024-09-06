@@ -20,3 +20,4 @@ Questa applicazione serve per calcolare come dividere le mance per i dipendenti.
 - ShadCN ui
 - localStorage
 - Typescript
+
