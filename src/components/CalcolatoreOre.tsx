@@ -9,7 +9,6 @@ const CalcolatoreOre: React.FC<calcolatoreOreProps> = ({ manciaTotale }) => {
 
   return (
     <>
-      <div>CalcolatoreOre</div>
       <UserGrid data={tipPerUser} noButton isHours mostraMancia />
     </>
   );
