@@ -86,7 +86,7 @@ const SingleUser: React.FC<SingleUserProps> = ({
         {/* se mancia esiste mostrala */}
         {mostraMancia && (
           <p>
-            Mancia: <span className="font-semibold">{mancia}</span>
+            Mancia: <span className="font-semibold">{mancia?.toFixed(2)}&euro;</span>
           </p>
         )}
       </CardSingleUser>

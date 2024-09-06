@@ -10,7 +10,7 @@ const UtentiPage = () => {
   return (
     <>
       <Navbar />
-      <Page>
+      <Page className="pb-28">
         <FormAddUser />
         <UserGrid data={dataUser} />
       </Page>

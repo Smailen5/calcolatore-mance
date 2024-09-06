@@ -15,15 +15,15 @@ const Menu = () => {
       <DropdownMenuContent>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <Link to="/">Home</Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/utenti">Utenti</Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to="/aggiungi-ore">Ore</Link>
-        </DropdownMenuItem>
+        <Link to="/">
+          <DropdownMenuItem>Home</DropdownMenuItem>
+        </Link>
+        <Link to="/utenti">
+          <DropdownMenuItem>Utenti</DropdownMenuItem>
+        </Link>
+        <Link to="/aggiungi-ore">
+          <DropdownMenuItem>Ore</DropdownMenuItem>
+        </Link>
         <DropdownMenuItem>Tutorial</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
