@@ -3,6 +3,7 @@ import Error from "../pages/ErrorPage";
 import Home from "../pages/HomePage";
 import Params from "../pages/UtentiPage";
 import HoursPage from "@/pages/HoursPage";
+import TutorialPage from "@/pages/TutorialPage";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
   {
     path: "/aggiungi-ore",
     element: <HoursPage />,
+  },
+  {
+    path:"/tutorial",
+    element: <TutorialPage />,
   },
   {
     path: "*",
