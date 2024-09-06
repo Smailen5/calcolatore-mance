@@ -26,3 +26,5 @@ export const useCalcolaOre = (manciaTotale: number) => {
   });
   return tipPerUser
 };
+
+// calcola la mancia in base alle ore lavorate, da una percentuale di mancia sul totale ore
