@@ -18,7 +18,7 @@ const UserGrid = ({ noButton, data, selectable, isHours, mostraMancia }: UserGri
 
   // se non ci sono user visualizza un messaggio
   if (!data || data.length === 0) {
-    return <p className="text-center">Non hai ancora aggiunto dipendenti</p>;
+    return <p className="text-center">Non hai ancora aggiunto utenti o non hai aggiornato le ore</p>;
   }
 
   // gestisce la selezione del user
