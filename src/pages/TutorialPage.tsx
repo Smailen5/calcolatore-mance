@@ -3,8 +3,6 @@ import Navbar from "@/components/Navbar";
 import Page from "@/components/Page";
 import AggiungiUtentiTutorial from "@/components/AggiungiUtentiTutorial";
 
-
-
 const TutorialPage = () => {
   return (
     <>
@@ -12,7 +10,7 @@ const TutorialPage = () => {
       <Page className="items-center">
         <h1 className="text-xl font-bold">Tutorial</h1>
         {/* lista che rimanda alle sezioni della pagina */}
-        <ul className="">
+        <ul className="w-full list-inside list-disc">
           <li>
             <a href="#aggiungi-utenti">Aggiungi utenti</a>
           </li>
