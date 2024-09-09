@@ -1,7 +1,9 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Page from "@/components/Page";
-import aggiungiUtenti from "../assets/screenshot/aggiungi-utenti-page.jpeg";
+import AggiungiUtentiTutorial from "@/components/AggiungiUtentiTutorial";
+
+
 
 const TutorialPage = () => {
   return (
@@ -18,13 +20,7 @@ const TutorialPage = () => {
           <li>Calcola le mance</li>
         </ul>
 
-        <section id="aggiungi-utenti">
-          {/* Prima sezione come si aggiungo gli utenti e il perche di tutti i parametri */}
-          <p>
-            scrivi qui come usare l'applicazione spiegando tutte le funzionalita
-          </p>
-          <img src={aggiungiUtenti} alt="" />
-        </section>
+        <AggiungiUtentiTutorial />
 
         {/* Sezione di come si recuperano gli utenti e il perche, come si aggiungo le ore e come si aggiornano */}
 
