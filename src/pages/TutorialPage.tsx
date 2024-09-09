@@ -12,7 +12,10 @@ const TutorialPage = () => {
         {/* lista che rimanda alle sezioni della pagina */}
         <ul className="w-full list-inside list-disc">
           <li>
-            <a href="#aggiungi-utenti">Aggiungi utenti</a>
+            <a href="#aggiungi-utente">Aggiungi utente</a>
+          </li>
+          <li>
+            <a href="#elimina-utente">Elimina utente</a>
           </li>
           <li>Aggiungi ore</li>
           <li>Calcola le mance</li>
