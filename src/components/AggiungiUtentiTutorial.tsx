@@ -5,9 +5,9 @@ import utenteAggiunto from "../assets/screenshot/utente-aggiunto.jpeg";
 function AggiungiUtentiTutorial() {
   return (
     <PageTutorial>
-      <div id="aggiungi-utenti">
+      <section>
         {/* Prima sezione come si aggiungo gli utenti e il perche di tutti i parametri */}
-        <h2 className="my-8 text-xl font-semibold">Aggiungi/rimuovi utenti</h2>
+        <h2 id="aggiungi-utente" className="my-8 text-xl font-semibold">Aggiungi utenti</h2>
         <article className="space-y-4">
           <p>
             Per aggiungere un nuovo utente devi aggiungere tutti i parametri
@@ -24,6 +24,7 @@ function AggiungiUtentiTutorial() {
             fine del form, l'utente sara subito visibile e verra salvato
             internamente al tuo dispositivo dopo un breve tempo di attesa.
           </p>
+          <h2 id="elimina-utente" className="my-8 text-xl font-semibold">Elimina utenti</h2>
           <p>
             Da questa pagina e possibile eliminare anche gli utenti non piu in
             forza, per eliminarli e sufficiente cliccare sul bottone con l'icona
@@ -38,7 +39,7 @@ function AggiungiUtentiTutorial() {
             anzianita di anni di lavoro.
           </p>
         </article>
-      </div>
+      </section>
     </PageTutorial>
   );
 }
